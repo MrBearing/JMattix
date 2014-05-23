@@ -1,0 +1,23 @@
+<GamePropety>
+	<Field>
+    <height>4</height>
+    <width>4</width>
+  </Field>
+	<Tips>
+    <Tip>1</Tip>
+    <Tip>1</Tip>
+    <Tip>2</Tip>
+    <Tip>2</Tip>
+    <Tip>3</Tip>
+    <Tip>3</Tip>
+    <Tip>4</Tip>
+    <Tip>4</Tip>
+    <Tip>5</Tip>
+    <Tip>5</Tip>
+    <Tip>6</Tip>
+    <Tip>6</Tip>
+    <Tip>7</Tip>
+    <Tip>7</Tip>
+    <Tip>8</Tip>
+  </Tips>
+</GamePropety>
