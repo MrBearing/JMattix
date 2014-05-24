@@ -122,12 +122,6 @@ public class Field {
     return rt;
   }
   
-  /**
-   * 
-   */
-  public Move getLegalMove(){
-    
-  }
   
   /**
    * 合法手を返す
