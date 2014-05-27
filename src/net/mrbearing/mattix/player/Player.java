@@ -80,8 +80,8 @@ public abstract class Player {
   
   /**
    * 
-   * このメソッドに思考ルーチンorユーザーインターフェース空の入力を実装。
-   * 
+   * このメソッドに思考ルーチンorユーザーインターフェースからの入力を実装。
+   * @param int[] legalMove
    */
   protected abstract int thinkMove(int[] legalMove);
   public abstract void win();
