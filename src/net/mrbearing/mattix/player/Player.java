@@ -84,6 +84,9 @@ public abstract class Player {
    * @param int[] legalMove
    */
   protected abstract int thinkMove(int[] legalMove);
+  /**
+   * 対象のプレイヤーが勝利した際に呼ばれるメソッド
+   */
   public abstract void win();
   public abstract void lose();
 

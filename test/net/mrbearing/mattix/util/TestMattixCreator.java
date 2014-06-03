@@ -3,8 +3,8 @@ package net.mrbearing.mattix.util;
 import java.io.File;
 
 import net.mrbearing.mattix.GamePropety;
+import net.mrbearing.mattix.GamePropetyFacroty;
 import net.mrbearing.mattix.Mattix;
-import net.mrbearing.mattix.GamePropety.GamePropetyFacroty;
 import net.mrbearing.mattix.exec.Main;
 
 public class TestMattixCreator {

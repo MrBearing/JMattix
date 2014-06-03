@@ -1,12 +1,12 @@
 package net.mrbearing.mattix;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import net.mrbearing.mattix.tip.CrossTip;
 import net.mrbearing.mattix.tip.ITip;
 import net.mrbearing.mattix.tip.NullTip;
 import net.mrbearing.mattix.tip.NumberTip;
-import net.mrbearing.mattix.util.MT19937;
 
 public class Field {
   private ITip[/* y */][/* x */] _field;
@@ -300,8 +300,8 @@ public class Field {
 
     public static Field create(GamePropety gp, Tipset ts) {
       Field field = new Field(gp.getFieldWidth(), gp.getFieldHeight());
-      MT19937 mt = new MT19937();//生成のためのメルセンヌ・ツイスタ
-
+      Random mt = new Random();
+      
       for (int y = 0; y < field.getHeight(); y++) {
         for (int x = 0; x < field.getWidth(); x++) {
 

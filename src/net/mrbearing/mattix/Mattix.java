@@ -30,7 +30,7 @@ public class Mattix {
   
   
   private void nextTurn() {
-    this.turn = this.turn.next();//TODO　何とかこのキモいの直す。
+    this.turn = this.turn.next();
   }
 
   public int[] getLegalMove(){
@@ -77,20 +77,11 @@ public class Mattix {
       // 合法手が存在しなくなるまでループを続ける。
       is_fin = this.gameRoutine();
     }
-    
-    /*
-    if(this.playerlist.get(0).getPoint() 
-        < this.playerlist.get(1).getPoint()){
-      this.playerlist.get(0).lose();
-      this.playerlist.get(1).win();
-    }else{ 
-      this.playerlist.get(0).win();
-      this.playerlist.get(1).lose();
-    }
-    */
     this.judge();
   }
-  
+  /**
+   * 勝敗判定
+   */
   public void judge(){
     if(this.playermap.get(ETURN.WIDTH).getPoint()< this.playermap.get(ETURN.LENGTH).getPoint()){
       this.playermap.get(ETURN.WIDTH).lose();

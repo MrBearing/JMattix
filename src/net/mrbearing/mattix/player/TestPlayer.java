@@ -1,9 +1,10 @@
 package net.mrbearing.mattix.player;
 
+import java.util.Random;
+
 import net.mrbearing.mattix.Mattix;
-import net.mrbearing.mattix.util.MT19937;
 /**
- * メルセンヌ・ツイスを用いて,ランダムに次手を決定するクラス。
+ *ランダムに次手を決定するクラス。
  * 
  * 
  * @author 岡本拓海
@@ -11,10 +12,10 @@ import net.mrbearing.mattix.util.MT19937;
  */
 public class TestPlayer extends Player {
   
-  MT19937 mt;
+  Random mt;
   public TestPlayer(Mattix mattix) {
     super(mattix);
-    this.mt = new MT19937();//メルセンヌ・ツイスタ生成
+    this.mt = new Random();
   }
   
  

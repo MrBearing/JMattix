@@ -15,11 +15,17 @@ public class CrossTip implements ITip {
   // constructor privateなので外から使えない
   // private CrossTip(){}
 
-  /**
+  /*
    * 
    * ---@return CrossTip クロスチップのインスタンスを返す
    * 
    * public static CrossTip getInstance(){ return crosstip; }
+   */
+  
+  /**
+   * 
+   * @param t
+   * @return
    */
   public static boolean isCrossTip(ITip t) {
     return t.getValue() == CrossTip.CROSS_TIP_VALUE;
