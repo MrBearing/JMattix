@@ -249,7 +249,10 @@ public class Field {
     this(gp.getFieldWidth(), gp.getFieldHeight());
 
   }
-
+  
+  /**
+   * デフォルトコンストラクタを呼べないようにする
+   */
   private Field() {
     /* なにもしない */
     /* デフォルトコンストラクタつぶし */
