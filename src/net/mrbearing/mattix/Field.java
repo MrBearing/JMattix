@@ -200,7 +200,8 @@ public class Field {
     }
     
     if (rt == null) {
-      // nullだったら
+      // nullだったら//test
+      
       throw new IllegalMoveException(IllegalMoveException.CANT_MOVE);
     }
     
