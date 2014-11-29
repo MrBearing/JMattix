@@ -1,9 +1,9 @@
 package net.mrbearing.mattix.player.gui;
 
 import net.mrbearing.mattix.Mattix;
-import net.mrbearing.mattix.player.Player;
+import net.mrbearing.mattix.player.AbstractPlayer;
 
-public class GUIHumanPlayer extends Player {
+public class GUIHumanPlayer extends AbstractPlayer {
 
   public GUIHumanPlayer(Mattix mattix) {
     super(mattix);

@@ -2,7 +2,7 @@ package net.mrbearing.mattix.player.AI;
 
 import net.mrbearing.mattix.IllegalMoveException;
 import net.mrbearing.mattix.Mattix;
-import net.mrbearing.mattix.player.Player;
+import net.mrbearing.mattix.player.AbstractPlayer;
 import net.mrbearing.mattix.tip.NumberTip;
 
 /**
@@ -12,7 +12,7 @@ import net.mrbearing.mattix.tip.NumberTip;
  * @author 岡本拓海
  * 
  */
-public class AIPlayer_v1 extends Player {
+public class AIPlayer_v1 extends AbstractPlayer {
 
   public AIPlayer_v1(Mattix mattix) {
     super(mattix);

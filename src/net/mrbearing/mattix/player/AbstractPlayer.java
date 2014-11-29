@@ -13,13 +13,13 @@ import net.mrbearing.mattix.tip.NumberTip;
  * @author 岡本拓海
  *
  */
-public abstract class Player {
+public abstract class AbstractPlayer {
   
   //コンストラクタにMAttixクラスを渡すようにして、合法手の参照等を行う。
   private Mattix _mattix;
   private int point;
   
-  public Player(Mattix mattix){
+  public AbstractPlayer(Mattix mattix){
     //このように宣言しておくとデフォルトコンストラクタがこれになる。
     this.setPoint(0);
     this._mattix = mattix;

@@ -26,8 +26,7 @@ public class Main {
     System.out.println("mattix");
     
     GamePropety gp = GamePropetyFacroty.create(new File(GAME_PROPETY_XML_PATH));
-    System.out.println(gp);
-    System.out.println();
+    System.out.println(gp);    System.out.println();
     Mattix mat = new Mattix(gp);
     
     CUIHumanPlayer hp = new CUIHumanPlayer(mat);

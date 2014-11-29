@@ -8,8 +8,14 @@ import net.mrbearing.mattix.tip.ITip;
 import net.mrbearing.mattix.tip.NullTip;
 import net.mrbearing.mattix.tip.NumberTip;
 
-public class Field {
-  private ITip[/* y */][/* x */] _field;
+public class Field implements Cloneable{
+  private ITip[/* y */][/* x */] _field;//XXX ココの実装なんとかしたい。
+  
+  
+  
+  
+  
+  
 /**
  * 
  * @return Position
@@ -21,7 +27,7 @@ public class Field {
     
     for (int y = 0; y < this.getHeight(); y++) {
       for (int x = 0; x < this.getWidth(); x++) {
-        if (CrossTip.isCrossTip(this.get(x, y))) {
+        if (CrossTip.isCrossTip(this.getChip(x, y))) {
           ans[0] = x;
           ans[1] = y;
           pos = new Position(x, y);
@@ -39,10 +45,19 @@ public class Field {
  * @param y
  * @return ITip
  */
-  public ITip get(int x, int y) {
+  public ITip getChip(int x, int y) {
     return this._field[y][x];
   }
 
+  /**
+   * 
+   * @param move
+   * @return
+   */
+  public ITip getChip(Move move){
+    return getChip(move.getX(), move.getY());
+  }
+  
  /**
   * 
   * @param x
@@ -84,7 +99,7 @@ public class Field {
       ans += (y + ":");// 行番号表示
       ans += "|";
       for (int x = 0; x < this.getWidth(); x++)
-        ans += this.get(x, y).toString() + "|";
+        ans += this.getChip(x, y).toString() + "|";
 
       ans += BR;// 改行
       ans += HR;
@@ -92,7 +107,7 @@ public class Field {
     return ans;
   }
 
-  // @Override
+  @Override
   public Field clone() {
     int width = this.getWidth();
     int height = this.getHeight();
@@ -101,13 +116,14 @@ public class Field {
 
     for (int i = 0; i < height; i++) {
       for (int j = 0; j < width; j++) {
-        ITip tip = this.get(j, i).clone();
+        ITip tip = this.getChip(j, i).clone();
         rt.set(j, i, tip);
       }
     }
 
     return rt;
   }
+  
   
   private ITip[] getRow(int row){
     return this._field[row];
@@ -117,7 +133,7 @@ public class Field {
     ITip[] rt = new ITip[this._field.length];
     
     for(int i =0; i < this._field.length; i++)
-      rt[i] = this.get(column, i);
+      rt[i] = this.getChip(column, i);
     
     return rt;
   }
@@ -131,7 +147,9 @@ public class Field {
    * @return 合法手が入った配列
    */
   public int[] getLegalMove(ETURN turn){
-    //_TODO 合法手がない場合はnullを返す仕様にする。
+    
+    //TODO Moveクラスの配列を返す仕様に変更する。
+    
     Position pos_ct = this.searchCrossTip();
     
     int[] rt = null;
@@ -206,7 +224,7 @@ public class Field {
     }
     
     
-    ct = this.get(pos_ct.getX(), pos_ct.getY());//crossTipを移動
+    ct = this.getChip(pos_ct.getX(), pos_ct.getY());//crossTipを移動
     this.set(pos_ct.getX(), pos_ct.getY(), new NullTip());// 元の場所にはnull
     
     
@@ -228,9 +246,9 @@ public class Field {
     ITip rt = null;
     try {
       if (turn == ETURN.WIDTH) {// 先手番だったら横移動
-        rt = this.get(pos, pos_ct.getY());// cross
+        rt = this.getChip(pos, pos_ct.getY());// cross
       } else if (turn == ETURN.LENGTH) {// 後手番だったら縦移動
-        rt = this.get(pos_ct.getX(), pos);
+        rt = this.getChip(pos_ct.getX(), pos);
       }
     }catch(ArrayIndexOutOfBoundsException e){
       //動かせないとこに入れたら、Exception投げ
@@ -301,18 +319,18 @@ public class Field {
    * 
    */
   static class FieldFactory {
-
-    public static Field create(GamePropety gp, Tipset ts) {
-      Field field = new Field(gp.getFieldWidth(), gp.getFieldHeight());
+    
+    public static Field create(GamePropety gameProperty, Tipset tipSet) {
+      Field field = new Field(gameProperty.getFieldWidth(), gameProperty.getFieldHeight());
       Random mt = new Random();
       
       for (int y = 0; y < field.getHeight(); y++) {
         for (int x = 0; x < field.getWidth(); x++) {
 
-          int a = Math.abs(mt.nextInt()) % ts.getTips().size();// ランダムに選択。長さで割って
-          ITip tip = ts.getTips().get(a);// 取って
+          int a = Math.abs(mt.nextInt()) % tipSet.getTips().size();// ランダムに選択。長さで割って
+          ITip tip = tipSet.getTips().get(a);// 取って
           field.set(x, y, tip);// 入れて
-          ts.getTips().remove(a);// 消す。リスト内は詰められる。
+          tipSet.getTips().remove(a);// 消す。リスト内は詰められる。
         }
       }
 

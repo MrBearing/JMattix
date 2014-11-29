@@ -2,7 +2,7 @@ package net.mrbearing.mattix;
 
 import java.util.HashMap;
 
-import net.mrbearing.mattix.player.Player;
+import net.mrbearing.mattix.player.AbstractPlayer;
 
 /**
  * 
@@ -18,7 +18,7 @@ public class Mattix {
   
   //private ArrayList<Player> playerlist; //2人以上のプレーヤー数への拡張性の確保
   
-  private HashMap<ETURN , Player> playermap ;
+  private HashMap<ETURN , AbstractPlayer> playermap ;
   
   public Field getField() {
     return this._field;
@@ -37,7 +37,7 @@ public class Mattix {
     return this.getField().getLegalMove(this.turn);
   }
   
-  public void addPlayer(Player p ,ETURN e){
+  public void addPlayer(AbstractPlayer p ,ETURN e){
 //    this.playerlist.add(p);
     this.playermap.put(e,p);
   }
@@ -48,18 +48,19 @@ public class Mattix {
     return this.playerlist;
   }
 */
-  public HashMap<ETURN, Player> getPlayersMap(){
+  public HashMap<ETURN, AbstractPlayer> getPlayersMap(){
     return this.playermap;
   }
   
   
   /**
+   * ゲーム本体のルーチン部分
    * 
    */
   private boolean gameRoutine(){
     //System.out.println("Mattix:gameRoutin");
     System.out.println(this.turn+":Mattix");
-    
+    //TODO Moveクラスを使用した実装に変更
     int[] legalMove = this.getLegalMove();//有効手の取得
     
     if(legalMove == null)
@@ -101,7 +102,7 @@ public class Mattix {
     this._field = Field.FieldFactory.create(gp, tipset);
     
     //this.playerlist  = new ArrayList<Player>();
-    this.playermap = new HashMap<ETURN, Player>();
+    this.playermap = new HashMap<ETURN, AbstractPlayer>();
     
     
     /* リスト中のプレイヤに対して順次手番を回す。

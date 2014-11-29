@@ -10,7 +10,7 @@ import net.mrbearing.mattix.Mattix;
  * @author 岡本拓海
  *
  */
-public class TestPlayer extends Player {
+public class TestPlayer extends AbstractPlayer {
   
   Random mt;
   public TestPlayer(Mattix mattix) {

@@ -6,7 +6,7 @@ import net.mrbearing.mattix.IllegalMoveException;
 import net.mrbearing.mattix.Mattix;
 import net.mrbearing.mattix.tip.NumberTip;
 
-public class CUIHumanPlayer extends Player {
+public class CUIHumanPlayer extends AbstractPlayer {
 
   private Scanner scanner;
 
